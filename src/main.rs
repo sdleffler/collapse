@@ -121,19 +121,28 @@ fn main() {
                 .help("Augment the sample image with rotations/reflections, using all members \
                        of the relevant symmetry group. This is the default symmetry setting."))
             .arg(Arg::with_name("identity")
+                .long("identity")
                 .help("The original image, since the identity transformation is a no-op. Don't \
                        forget this if you're building up a custom set of symmetries."))
-            .arg(Arg::with_name("reflect-x").help("Reflect over the x axis."))
-            .arg(Arg::with_name("reflect-y").help("Reflect over the y axis."))
+            .arg(Arg::with_name("reflect-x").long("reflect-x").help("Reflect over the x axis."))
+            .arg(Arg::with_name("reflect-y").long("reflect-y").help("Reflect over the y axis."))
             .arg(Arg::with_name("reflect-y-rot90")
+                .long("reflect-y-rot90")
                 .help("Reflect over the y axis, and then rotate by 90 degrees. This is \
                        equivalent to a reflection over the line y = -x."))
             .arg(Arg::with_name("reflect-x-rot90")
+                .long("reflect-x-rot90")
                 .help("Reflect the over the x axis, and then rotate by 90 degrees. This is \
                        equivalent to a reflection over the line y = x."))
-            .arg(Arg::with_name("rot90").help("Rotate the image 90 degrees clockwise."))
-            .arg(Arg::with_name("rot180").help("Rotate the image 180 degrees clockwise."))
-            .arg(Arg::with_name("rot270").help("Rotate the image 270 degrees clockwise."))
+            .arg(Arg::with_name("rot90")
+                .long("rot90")
+                .help("Rotate the image 90 degrees clockwise."))
+            .arg(Arg::with_name("rot180")
+                .long("rot180")
+                .help("Rotate the image 180 degrees clockwise."))
+            .arg(Arg::with_name("rot270")
+                .long("rot270")
+                .help("Rotate the image 270 degrees clockwise."))
             .group(ArgGroup::with_name("symmetry-simple").args(&["no-symmetry", "all-symmetry"]))
             .group(ArgGroup::with_name("symmetry-complex")
                 .args(&["identity",
@@ -155,12 +164,13 @@ fn main() {
                 .required(true)
                 .value_name("x, y"))
             .arg(Arg::with_name("pixel-constraint")
+                .help("source x, source y, output x (optionally a range \
+                       x0..x1, x0 inclusive, x1 exclusive), output y (optionally a range \
+                       y0..y1, y0 inclusive, y1 exclusive)")
                 .short("c")
                 .takes_value(true)
                 .multiple(true)
-                .value_name("source x, source y, output x (optionally a range x0..x1, x0 \
-                             inclusive, x1 exclusive), output y (optionally a range y0..y1, y0 \
-                             inclusive, y1 exclusive)")
+                .value_name("source x, source y, output x/range, output y/range")
                 .validator(validate_constraint)))
         .settings(&[AppSettings::SubcommandRequiredElseHelp]);
 
