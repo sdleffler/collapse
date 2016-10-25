@@ -139,16 +139,16 @@ impl<P> Source2<P>
                 if symmetry.contains(S2_ROTATE_270) {
                     symm_bufs.push(rotate270(&buf))
                 }
-                if symmetry.contains(S2_REFLECT_X) {
+                if symmetry.contains(S2_REFLECT_Y) {
                     symm_bufs.push(flip_horizontal(&buf))
                 }
-                if symmetry.contains(S2_REFLECT_Y) {
+                if symmetry.contains(S2_REFLECT_X) {
                     symm_bufs.push(flip_vertical(&buf))
                 }
-                if symmetry.contains(S2_REFLECT_Y_ROT90) {
+                if symmetry.contains(S2_REFLECT_X_ROT90) {
                     symm_bufs.push(flip_vertical(&rotate90(&buf)))
                 }
-                if symmetry.contains(S2_REFLECT_X_ROT90) {
+                if symmetry.contains(S2_REFLECT_Y_ROT90) {
                     symm_bufs.push(flip_horizontal(&rotate90(&buf)))
                 }
 

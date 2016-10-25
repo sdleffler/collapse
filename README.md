@@ -53,10 +53,10 @@ ARGS:
     <INPUT>              The input file to sample.
     <OUTPUT>             The output file to generate.
     <identity>           The original image, since the identity transformation is a no-op. Don't forget this if you're building up a custom set of symmetries.
-    <reflect-x>          Reflect the x coordinate. Please note that this is not a reflection over the x axis, but the y axis.
-    <reflect-y>          Reflect the y coordinate. Please note that this is not a reflection over the y axis, but the x axis.
-    <reflect-x-rot90>    Reflect the x coordinate, and then rotate by 90 degrees. This is equivalent to a reflection over the line y = -x.
-    <reflect-y-rot90>    Reflect the y coordinate, and then rotate by 90 degrees. This is equivalent to a reflection over the line y = x.
+    <reflect-x>          Reflect over the x axis.
+    <reflect-y>          Reflect over the y axis.
+    <reflect-y-rot90>    Reflect over the y axis, and then rotate by 90 degrees. This is equivalent to a reflection over the line y = -x.
+    <reflect-x-rot90>    Reflect the over the x axis, and then rotate by 90 degrees. This is equivalent to a reflection over the line y = x.
     <rot90>              Rotate the image 90 degrees clockwise.
     <rot180>             Rotate the image 180 degrees clockwise.
     <rot270>             Rotate the image 270 degrees clockwise.

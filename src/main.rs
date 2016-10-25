@@ -123,17 +123,13 @@ fn main() {
             .arg(Arg::with_name("identity")
                 .help("The original image, since the identity transformation is a no-op. Don't \
                        forget this if you're building up a custom set of symmetries."))
-            .arg(Arg::with_name("reflect-x")
-                .help("Reflect the x coordinate. Please note that this is not a reflection \
-                       over the x axis, but the y axis."))
-            .arg(Arg::with_name("reflect-y")
-                .help("Reflect the y coordinate. Please note that this is not a reflection \
-                       over the y axis, but the x axis."))
-            .arg(Arg::with_name("reflect-x-rot90")
-                .help("Reflect the x coordinate, and then rotate by 90 degrees. This is \
-                       equivalent to a reflection over the line y = -x."))
+            .arg(Arg::with_name("reflect-x").help("Reflect over the x axis."))
+            .arg(Arg::with_name("reflect-y").help("Reflect over the y axis."))
             .arg(Arg::with_name("reflect-y-rot90")
-                .help("Reflect the y coordinate, and then rotate by 90 degrees. This is \
+                .help("Reflect over the y axis, and then rotate by 90 degrees. This is \
+                       equivalent to a reflection over the line y = -x."))
+            .arg(Arg::with_name("reflect-x-rot90")
+                .help("Reflect the over the x axis, and then rotate by 90 degrees. This is \
                        equivalent to a reflection over the line y = x."))
             .arg(Arg::with_name("rot90").help("Rotate the image 90 degrees clockwise."))
             .arg(Arg::with_name("rot180").help("Rotate the image 180 degrees clockwise."))
