@@ -2,9 +2,13 @@
 
 The wavefunction collapse algorithm, reimplemented in Rust, with a nice CLI.
 
+Inspired by the reference implementation [here.](https://github.com/mxgmn/WaveFunctionCollapse)
+
 # Running/building it
 
-To install it, simply run `cargo build --release && cargo install`. The installed binary will be named `runcollapse`. Check out the command-line interface with `runcollapse --help`.
+[Cargo](https://crates.io/) is required to compile and run this repository.
+
+To install it, simply run `cargo build --release && cargo install`. The installed binary will be named `runcollapse`. Check out the command-line interface with `runcollapse --help`. Building with `--release` is heavily recommended, as it speeds up runtimes by a ridiculous amount anecdotally determined to be at least ten-fold.
 
 Features:
 
