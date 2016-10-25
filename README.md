@@ -4,6 +4,12 @@ The wavefunction collapse algorithm, reimplemented in Rust, with a nice CLI.
 
 Inspired by the reference implementation [here.](https://github.com/mxgmn/WaveFunctionCollapse)
 
+# Features
+
+- *An accurate progress bar!* (the time estimate seems to be based on a first derivative approximation, and this algorithm tends to accelerate over time. So TODO: a different progress bar.)
+- More options than the original! Full control over augmenting the sample with symmetries, and over which axes are periodic in the input/output.
+- Coming soon: Built-in support for animations and voxels, as well as approximate comparisons instead of exact equality tests when colliding samples. The goal with the approximate equality testing is to make the algorithm work with images that have larger palettes.
+
 # Running/building it
 
 [Cargo](https://crates.io/) is required to compile and run this repository.

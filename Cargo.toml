@@ -2,6 +2,7 @@
 name = "collapse"
 version = "0.1.0"
 authors = ["Sean Leffler <sean@errno.com>"]
+license = "MIT"
 
 [lib]
 name = "collapse"
