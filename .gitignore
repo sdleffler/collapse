@@ -1,3 +1,4 @@
 resources
 output
 target
+Cargo.lock
