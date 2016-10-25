@@ -10,7 +10,7 @@ use wave::State;
 
 
 mod source2d;
-// mod source3d;
+mod source3d;
 
 
 pub use self::source2d::Source2;

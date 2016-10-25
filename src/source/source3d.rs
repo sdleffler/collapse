@@ -11,7 +11,7 @@ use bit_vec::BitVec;
 use image::{GenericImage, Pixel};
 
 use ndarray::prelude::*;
-use ndarray::{Array3, Ix3};
+use ndarray::{Array3, ArrayView3, Ix3};
 
 use vosealias::AliasTable;
 
@@ -132,21 +132,21 @@ pub mod symmetry {
         }
     }
 
-    const JS3_REFLECT: u64 = 0b100000;
-    const JS3_SWAP_TETRA: u64 = 0b10000;
+    pub const JS3_REFLECT: u64 = 0b100000;
+    pub const JS3_SWAP_TETRA: u64 = 0b10000;
 
-    const JS3_ROT120_ID: u64 = 0b0000;
-    const JS3_ROT120_YZX: u64 = 0b0100;
-    const JS3_ROT120_ZXY: u64 = 0b1000;
+    pub const JS3_ROT120_ID: u64 = 0b0000;
+    pub const JS3_ROT120_YZX: u64 = 0b0100;
+    pub const JS3_ROT120_ZXY: u64 = 0b1000;
 
-    const JS3_ROT120_MASK: u64 = 0b1100;
+    pub const JS3_ROT120_MASK: u64 = 0b1100;
 
-    const JS3_ROT180_ID: u64 = 0b00;
-    const JS3_ROT180_Z: u64 = 0b01;
-    const JS3_ROT180_X: u64 = 0b10;
-    const JS3_ROT180_Y: u64 = 0b11;
+    pub const JS3_ROT180_ID: u64 = 0b00;
+    pub const JS3_ROT180_Z: u64 = 0b01;
+    pub const JS3_ROT180_X: u64 = 0b10;
+    pub const JS3_ROT180_Y: u64 = 0b11;
 
-    const JS3_ROT180_MASK: u64 = 0b11;
+    pub const JS3_ROT180_MASK: u64 = 0b11;
 
     impl Symmetry3 {
         #[inline]
@@ -778,7 +778,7 @@ impl<P> Source for Source3<P>
     }
 
 
-    fn resolve(&self, dim: Self::Dims, wave: Array3<RefCell<State<Ix3>>>) -> Array3<P> {
+    fn resolve<'a>(&self, dim: Self::Dims, wave: ArrayView3<'a, RefCell<State<Ix3>>>) -> Array3<P> {
         Array::from_shape_fn(dim, |(x, y, z)| {
             let (wx, dx) = if x < wave.dim().0 {
                 (x, 0)
@@ -847,5 +847,27 @@ mod tests {
                    (0, 1, 0));
         assert_eq!(Symmetry3::apply_symmetry(JS3_REFLECT | JS3_SWAP_TETRA, (1, 1, 1), (0, 0, 0)),
                    (0, 0, 1));
+
+        for x in 0..2 {
+            for y in 0..2 {
+                for z in 0..2 {
+                    for &s in [0u64, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 16, 17, 18, 19, 20, 21,
+                               22, 23, 24, 25, 26, 27, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41,
+                               42, 43, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59]
+                        .into_iter() {
+                        assert_eq!(Symmetry3::invert_symmetry(s,
+                                                              (1, 1, 1),
+                                                              Symmetry3::apply_symmetry(s,
+                                                                                        (1,
+                                                                                         1,
+                                                                                         1),
+                                                                                        (x,
+                                                                                         y,
+                                                                                         z))),
+                                   (x, y, z));
+                    }
+                }
+            }
+        }
     }
 }
