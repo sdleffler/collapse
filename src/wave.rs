@@ -12,7 +12,7 @@ use ndarray::NdIndex;
 use rand::Rng;
 use rand::StdRng;
 
-use source::{Source, Source2};
+use source::{Source, OverlappingSource2};
 
 
 #[derive(Clone)]
@@ -38,7 +38,7 @@ pub struct Wave<'a, R, S: ?Sized>
 }
 
 
-impl<'a, R, P: Eq + Hash + Copy> fmt::Debug for Wave<'a, R, Source2<P>> {
+impl<'a, R, P: Eq + Hash + Copy> fmt::Debug for Wave<'a, R, OverlappingSource2<P>> {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         let mut grid = String::new();
         for j in 0..self.states.dim().1 {
@@ -198,7 +198,7 @@ impl<'a, R: Rng, S: 'a + Source> Wave<'a, R, S>
 //         let _ = env_logger::init();
 //
 //         let img = image::open("resources/Rooms.png").expect("Failed to open source image");
-//         let src = Source2::from_image(&img, (3, 3), (true, true), Symmetry2::all());
+//         let src = OverlappingSource2::from_image(&img, (3, 3), (true, true), Symmetry2::all());
 //
 //         let wave = Wave::new((64, 64), (true, true), &src).expect("IO error");
 //
@@ -218,7 +218,7 @@ impl<'a, R: Rng, S: 'a + Source> Wave<'a, R, S>
 //         let img = image::open("resources/Flowers.png").expect("Failed to open source image");
 //         let sky = img.get_pixel(0, 0);
 //         let gnd = img.get_pixel(0, 21);
-//         let src = Source2::from_image(&img, (3, 3), (true, false), S2_IDENTITY | S2_REFLECT_Y);
+//         let src = OverlappingSource2::from_image(&img, (3, 3), (true, false), S2_IDENTITY | S2_REFLECT_Y);
 //
 //         let mut wave = Wave::new((128, 128), (true, false), &src).expect("IO error");
 //         for i in 0..128 {
@@ -243,7 +243,7 @@ impl<'a, R: Rng, S: 'a + Source> Wave<'a, R, S>
 //
 //         let img = image::open("resources/DitheringSword.png").expect("Failed to open source image");
 //         let empty = img.get_pixel(0, 0);
-//         let src = Source2::from_image(&img, (3, 3), (true, true), S2_IDENTITY);
+//         let src = OverlappingSource2::from_image(&img, (3, 3), (true, true), S2_IDENTITY);
 //
 //         let mut wave = Wave::new((128, 128), (true, true), &src).expect("IO error");
 //         for i in 0..128 {

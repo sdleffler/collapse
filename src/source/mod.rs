@@ -9,12 +9,12 @@ use rand::Rng;
 use wave::State;
 
 
-mod source2d;
-mod source3d;
+mod OverlappingSource2d;
+mod OverlappingSource3d;
 
 
-pub use self::source2d::Source2;
-pub use self::source2d::symmetry::*;
+pub use self::OverlappingSource2d::OverlappingSource2;
+pub use self::OverlappingSource2d::symmetry::*;
 
 
 pub trait Source {

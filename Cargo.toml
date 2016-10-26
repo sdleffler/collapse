@@ -24,7 +24,7 @@ ndarray = "0.6.7"
 pbr = "0.3.1"
 rand = "0.3.14"
 regex = "0.1"
-vosealias = { path = "../vosealias" }
+vosealias = { git = "https://github.com/sdleffler/vosealias-rs" }
 
 [dev-dependencies]
 env_logger = "0.3"

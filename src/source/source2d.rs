@@ -60,7 +60,7 @@ impl Neg for Offset2 {
 }
 
 
-pub struct Source2<P> {
+pub struct OverlappingSource2<P> {
     palette: Vec<P>,
     inverse_palette: HashMap<P, Pixel2>,
 
@@ -94,7 +94,7 @@ use self::symmetry::*;
 pub struct Sample2<P>(RcArray2<P>);
 
 
-impl<P> Source2<P>
+impl<P> OverlappingSource2<P>
     where P: Copy
 {
     pub fn from_image<I: GenericImage<Pixel = P> + 'static>(img: &I,
@@ -273,7 +273,7 @@ impl<P> Source2<P>
 
         debug!("Done.");
 
-        Source2 {
+        OverlappingSource2 {
             palette: {
                 let mut vec = palette_map.iter().map(|(&p, &px)| (p, px)).collect::<Vec<_>>();
                 vec.sort_by_key(|x| x.1);
@@ -457,7 +457,7 @@ impl<P> Source2<P>
             collide
         };
 
-        Source2 {
+        OverlappingSource2 {
             palette: {
                 let mut vec = palette_map.iter().map(|(&p, &px)| (p, px)).collect::<Vec<_>>();
                 vec.sort_by_key(|x| x.1);
@@ -484,7 +484,7 @@ impl<P> Source2<P>
 }
 
 
-impl<P> Source for Source2<P>
+impl<P> Source for OverlappingSource2<P>
     where P: Eq + Hash + Copy
 {
     type Dims = Ix2;

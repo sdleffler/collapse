@@ -346,7 +346,7 @@ fn main() {
                 vec![]
             };
 
-        let src = Source2::from_image_cli(&img, n, periodic_input, symmetries);
+        let src = OverlappingSource2::from_image_cli(&img, n, periodic_input, symmetries);
 
         let mut pb = ProgressBar::new(1);
         pb.message("Building Wave object... ");
