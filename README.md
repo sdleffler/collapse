@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/sdleffler/collapse.svg?branch=master)](https://travis-ci.org/sdleffler/collapse)
+
 # collapse
 
 The wavefunction collapse algorithm, reimplemented in Rust, with a nice CLI.
