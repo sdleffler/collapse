@@ -11,7 +11,7 @@ extern crate regex;
 use std::str::FromStr;
 
 
-use image::{GenericImage, ImageBuffer};
+use image::{GenericImageView, ImageBuffer};
 use clap::{App, AppSettings, Arg, ArgGroup, SubCommand};
 use collapse::*;
 use pbr::ProgressBar;
